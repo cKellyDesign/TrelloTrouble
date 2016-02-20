@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="http://api.trello.com/1/client.js?key=20f275fe77202afb6c4a66039b78d4e4"></script>
+  <script src="http://underscorejs.org/underscore-min.js"></script>
+  <script src="http://backbonejs.org/backbone-min.js"></script>
+</head>
+<body>
+  <main></main>
+
+  <script type="text/template" id="indexTemplate">
+    <section id="IndexView">
+      <h1>Your Boards</h1>
+      <div id="boardsList">
+        <% _.each(boards, function (board, i) { %>
+          <h3><a class="boardIndex" id="<%= board.id %>" href="#"><%= board.name %></a></h3>
+          <article class="boardView" id="BoardView_<%= board.id %>"></article>
+        <% }); %>
+      </div>
+    </section>
+  </script>
+
+  <script type="text/template" id="boardTemplate">
+      <% _.each(lists, function (list) { %>
+        <section class="listView" id="ListView_<%= list.id %>" data-listid="<%= list.id %>">
+          <h3><%= list.name %></h3>
+          <span>...loading</span>
+        </section>
+      <% }); %>
+  </script>
+
+  <script type="text/template" id="listTemplate">
+    <h3><%= name %></h3>
+    <ul class="list">
+      <% _.each(cards, function (card){ %>
+        <div class="card">
+          <a href="<%= card.url %>" target="_blank" class="cardLink_<%= card.id %>"><%= card.name %></a>
+        </div>
+      <% }); %>
+    </ul>
+  </script>
+
+  <script src="/scripts/app.js"></script>
+</body>
+</html>
