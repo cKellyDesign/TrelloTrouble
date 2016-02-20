@@ -2,16 +2,20 @@ window.TT = window.TT || {};
 
 TT.api = {
 
+  _get: function (path, callback, options) {
+    Trello.get(path, (options || {}), callback, this.onRequestFailHandler);
+  },
+
   getUserBoards: function (callback) {
-    Trello.get('/members/me/boards', {}, callback, this.onRequestFailHandler);
+    this._get('/members/me/boards', callback);
   },
 
   getBoardByID: function (id, callback) {
-    Trello.get('/boards/' + id, { lists: 'all' }, callback, this.onRequestFailHandler);
+    this._get('/boards/' + id, callback, { lists: 'all' });
   },
 
   getListByID: function (id, callback) {
-    Trello.get('/lists/' + id + '/cards', {}, callback, this.onRequestFailHandler);
+    this._get('/lists/' + id + '/cards', callback);
   },
 
   onRequestFailHandler: (function (self) {
