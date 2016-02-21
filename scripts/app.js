@@ -28,9 +28,7 @@ TT.api = {
 
 var IndexView = Backbone.View.extend({
   
-  events: {
-    'click .boardIndex' : 'onIndexBoardClick'
-  },
+  events: { },
 
   template: _.template( $('#indexTemplate').html() ),
 
@@ -53,6 +51,15 @@ var IndexView = Backbone.View.extend({
     this.$el.html(this.template({ boards: this.collection.toJSON() }));
   },
 
+  getBoards: function () {
+    var callback = _.bind(this.onGetBoard, this);
+    _.each(this.collection.toJSON(), function (board, i){
+      // console.log('boardIndex => board', board;
+      TT.api.getBoardByID(board.id, callback);
+    });
+
+  },
+
   onIndexBoardClick: function (e) {
     e.preventDefault();
     var id = e.target.id,
@@ -72,6 +79,7 @@ var IndexView = Backbone.View.extend({
       self.collection.add(board);
     });
     this.render();
+    this.getBoards();
   },
 
   authorize: function () {

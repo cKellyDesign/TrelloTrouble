@@ -5,16 +5,18 @@
   <script src="http://api.trello.com/1/client.js?key=20f275fe77202afb6c4a66039b78d4e4"></script>
   <script src="http://underscorejs.org/underscore-min.js"></script>
   <script src="http://backbonejs.org/backbone-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/baseline.compress.css">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
-<body>
-  <main></main>
+<body class="page-grid">
+  <main class="layout-grid"></main>
 
   <script type="text/template" id="indexTemplate">
-    <section id="IndexView">
+    <section id="IndexView" class="width8">
       <h1>Your Boards</h1>
       <div id="boardsList">
         <% _.each(boards, function (board, i) { %>
-          <h3><a class="boardIndex" id="<%= board.id %>" href="#"><%= board.name %></a></h3>
+          <h3 class="boardTitle"><a class="boardIndex" id="<%= board.id %>"><%= board.name %></a></h3>
           <article class="boardView" id="BoardView_<%= board.id %>"></article>
         <% }); %>
       </div>
@@ -22,8 +24,8 @@
   </script>
 
   <script type="text/template" id="boardTemplate">
-      <% _.each(lists, function (list) { %>
-        <section class="listView" id="ListView_<%= list.id %>" data-listid="<%= list.id %>">
+      <% _.each(lists, function (list, i) { %>
+        <section class="column listView unitx2<% if (i === 0) { %> first<% } %>" id="ListView_<%= list.id %>" data-listid="<%= list.id %>">
           <h3><%= list.name %></h3>
           <span>...loading</span>
         </section>
@@ -31,7 +33,7 @@
   </script>
 
   <script type="text/template" id="listTemplate">
-    <h3><%= name %></h3>
+    <h3 class="listTitle"><%= name %></h3>
     <ul class="list">
       <% _.each(cards, function (card){ %>
         <div class="card">
