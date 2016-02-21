@@ -5,6 +5,7 @@
   <script src="http://api.trello.com/1/client.js?key=20f275fe77202afb6c4a66039b78d4e4"></script>
   <script src="http://underscorejs.org/underscore-min.js"></script>
   <script src="http://backbonejs.org/backbone-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
   <main></main>
@@ -14,7 +15,7 @@
       <h1>Your Boards</h1>
       <div id="boardsList">
         <% _.each(boards, function (board, i) { %>
-          <h3><a class="boardIndex" id="<%= board.id %>" href="#"><%= board.name %></a></h3>
+          <h3 class="boardTitle"><a class="boardIndex" id="<%= board.id %>" href="#"><%= board.name %></a></h3>
           <article class="boardView" id="BoardView_<%= board.id %>"></article>
         <% }); %>
       </div>
@@ -31,7 +32,7 @@
   </script>
 
   <script type="text/template" id="listTemplate">
-    <h3><%= name %></h3>
+    <h3 class="listTitle"><%= name %></h3>
     <ul class="list">
       <% _.each(cards, function (card){ %>
         <div class="card">

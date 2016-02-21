@@ -1,0 +1,30 @@
+
+.boardTitle {
+	display: block;
+	clear: both;
+}
+.boardView {
+	display: inline-block;
+	clear: both;
+	margin-bottom: 50px;
+  background-color: #ddd;
+  padding: 10px 5px;
+}
+
+.listView {
+    float: left;
+    width: 210px;
+    margin: 0 5px;
+    border: 1px solid red;
+    padding: 0 10px 20px;
+
+
+}
+
+.listView .list {
+	margin: 0;
+	padding: 0 0 0 15px;
+	display: block;
+	border: red;
+	
+}
