@@ -22,7 +22,7 @@ TT.api = {
     return function (error) {
       console.error(arguments[1], error.status, ':', error.responseText);
     };
-  })(this),
+  })(this)
 
 };
 
