@@ -99,11 +99,15 @@ var IndexView = Backbone.View.extend({
 
 var BoardView = Backbone.View.extend({
 
-  events: {},
+  events: {
+    'click .toggleBoard' : 'onToggleBoardClick'
+  },
+
   template: _.template($('#boardTemplate').html()),
 
   initialize: function () {
     this.render();
+    this.$toggle = this.$el.find('.toggleBoard');
     this.initLists();
   },
 
@@ -115,6 +119,11 @@ var BoardView = Backbone.View.extend({
     _.each((this.model.get('lists')), function (list, i) {
       new ListView({ el: '#ListView_' + list.id, model: new ListModel(list)});
     });
+  },
+
+  onToggleBoardClick: function (e) {
+    this.$el.find('.listView').toggle();
+    this.$toggle.html( (this.$toggle.html() === 'hide') ? 'show' : 'hide' );
   }
 
 });

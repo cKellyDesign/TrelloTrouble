@@ -16,14 +16,21 @@
       <h1>Your Boards</h1>
       <div id="boardsList">
         <% _.each(boards, function (board, i) { %>
-          <h3 class="boardTitle"><a class="boardIndex" id="<%= board.id %>"><%= board.name %></a></h3>
-          <article class="boardView" id="BoardView_<%= board.id %>"></article>
+          <div class="boardContainer">
+            <article class="boardView" id="BoardView_<%= board.id %>"></article>
+          </div>
         <% }); %>
       </div>
     </section>
   </script>
 
   <script type="text/template" id="boardTemplate">
+      <div class="boardHeader">
+        <h3 class="boardTitle">
+          <a class="boardIndex" id="<%= id %>"><%= name %></a>
+        </h3>
+        <span class="toggleBoard">hide</span>
+      </div>
       <% _.each(lists, function (list, i) { %>
         <section class="column listView unitx2<% if (i === 0) { %> first<% } %>" id="ListView_<%= list.id %>" data-listid="<%= list.id %>">
           <h3><%= list.name %></h3>

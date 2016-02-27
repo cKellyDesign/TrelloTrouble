@@ -5,20 +5,34 @@ h3 {
 	font-size: 1.5em;
 }
 
+.boardContainer {
+	display: block;
+}
 
 .boardTitle {
-	display: block;
+	display: inline-block;
 	clear: both;
 }
+.toggleBoard {
+	display: inline-block;
+	color: #666;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
 .boardIndex {
 	color: black;
 	text-decoration: none;
+}
+.boardHeader {
+	display: block;
+	margin-bottom: 10px;
 }
 
 .boardView {
 	display: inline-block;
 	clear: both;
-	margin: 20px 0;
+	margin: 20px 0 0;
   background-color: #ccc;
   padding: 10px;
 }
